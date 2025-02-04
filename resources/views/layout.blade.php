@@ -21,7 +21,7 @@
             <!-- Act only according to that maxim whereby you can, at the same time, will that it should become a universal law. - Immanuel Kant -->
         </div>
         <div class="row">
-            <img src="{{ asset('img/yellow-car.jpg') }}" alt="logo" width="175" height="100">
+            
             <nav>
                 <ul>
                     <li><a href="{{ route('makers.index') }}">Gyártók</a></li>

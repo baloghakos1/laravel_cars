@@ -58,7 +58,8 @@ class MakerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $maker = Maker::find($id);
+        return view('makers.edit', compact('maker'));
     }
 
     /**
@@ -81,6 +82,9 @@ class MakerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $maker  = Maker::find($id);
+        $maker->delete();
+
+        return redirect()->route('makers.index');
     }
 }
