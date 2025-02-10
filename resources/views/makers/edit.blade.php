@@ -7,7 +7,7 @@
         <form action="{{ route('makers.update', $maker->id) }}" method="post">
             @csrf
             @method('PATCH')
-            <fieldset>
+            <fieldset id="asd">
                 <label for="name">Megnevezés</label>
                 <input type="text" id="name" name="name" required value="{{ old('name', $maker->name) }}">
             </fieldset>

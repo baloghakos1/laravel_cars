@@ -25,7 +25,7 @@ class MakerController extends Controller
      */
     public function create()
     {
-        //
+        return view('makers.create');
     }
 
     /**
@@ -36,7 +36,11 @@ class MakerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $maker  = new Maker();
+        $maker->name = $request->input('name');
+        $maker->save();
+
+        return redirect()->route('makers.index')->with('success', "{$maker->name} sikeresen létrehozva");
     }
 
     /**
@@ -71,7 +75,11 @@ class MakerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $maker  = Maker::find($id);
+        $maker->name = $request->input('name');
+        $maker->save();
+
+        return redirect()->route('makers.index')->with('success', "{$maker->name} sikeresen módosítva");
     }
 
     /**

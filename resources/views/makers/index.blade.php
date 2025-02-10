@@ -5,10 +5,18 @@
 <div>
     <!-- Happiness is not something readymade. It comes from your own actions. - Dalai Lama -->
     <ul>
+        <div class="col">
+            <a href="{{ route('makers.create')}}"><button>Új hozzáadása</button></a>
+        </div>
+        <br><br><br>
+        
         @foreach($makers as $maker)
         <li class="row {{ $loop->iteration % 2 == 0 ? 'even' : 'odd' }}">
-                <div class="col id">{{ $maker->id }}</div>
-                <div class="col">{{$maker->name}}</div>
+            <table>
+                <tr>
+                    <td><div class="col id">{{ $maker->id }}</div></td>
+                    <td><div class="col">{{$maker->name}}</div></td>
+                <td>
                 <div class="right">
 
                         <div class="col">
@@ -22,8 +30,10 @@
                             </form>
                         </div>
                 </div>
-
-            </li>
+                </td>
+                </tr>
+            </table>
+        </li>
         @endforeach
     </ul>
 </div>

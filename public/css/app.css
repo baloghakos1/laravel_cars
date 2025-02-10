@@ -1,0 +1,11 @@
+table, td {
+    border: 1px solid black;
+}
+
+td {
+    width: 150px;
+}
+
+#asd {
+    width: 500px;
+}
