@@ -12,12 +12,9 @@ class BodyController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    use ValidationRules;
-
     public function index()
     {
-        $bodies = Body::all();
-        return view('body.index', compact('bodies'));
+        
     }
 
     /**

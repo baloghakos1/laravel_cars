@@ -4,6 +4,7 @@
 <h1>Gyártók</h1>
 <div>
     <!-- Happiness is not something readymade. It comes from your own actions. - Dalai Lama -->
+    @include('success')
     <ul>
         <div class="col">
             <a href="{{ route('makers.create')}}"><button>Új hozzáadása</button></a>
@@ -11,7 +12,6 @@
         <br><br><br>
         
         @foreach($makers as $maker)
-        <li class="row {{ $loop->iteration % 2 == 0 ? 'even' : 'odd' }}">
             <table>
                 <tr>
                     <td><div class="col id">{{ $maker->id }}</div></td>
@@ -33,7 +33,7 @@
                 </td>
                 </tr>
             </table>
-        </li>
+        
         @endforeach
     </ul>
 </div>

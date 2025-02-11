@@ -93,6 +93,6 @@ class MakerController extends Controller
         $maker  = Maker::find($id);
         $maker->delete();
 
-        return redirect()->route('makers.index');
+        return redirect()->route('makers.index')->with('success', "{$maker->name} sikeresen törölve");
     }
 }
