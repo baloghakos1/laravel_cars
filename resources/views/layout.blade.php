@@ -24,7 +24,7 @@
             
             <nav>
                 <ul>
-                    <li><a href="{{ route('makers.index') }}">Gyártók</a></li>
+                    <li><a href="{{ route('makers.index') }}"><button>Gyártók</button></a></li>
 
                 </ul>
             </nav>

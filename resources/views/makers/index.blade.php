@@ -4,7 +4,9 @@
 <h1>Gyártók</h1>
 <div>
     <!-- Happiness is not something readymade. It comes from your own actions. - Dalai Lama -->
+    <div id="oksa">
     @include('success')
+    </div>
     <ul>
         <div class="col">
             <a href="{{ route('makers.create')}}"><button>Új hozzáadása</button></a>

@@ -9,3 +9,8 @@ td {
 #asd {
     width: 500px;
 }
+
+#oksa {
+    max-width: fit-content;
+    margin-left: 40px;
+}
