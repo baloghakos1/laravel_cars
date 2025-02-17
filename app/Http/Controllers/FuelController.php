@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fuel;
 use Illuminate\Http\Request;
 
 class FuelController extends Controller
@@ -13,7 +14,8 @@ class FuelController extends Controller
      */
     public function index()
     {
-        //
+        $fuels = Fuel::all();
+        return view('fuels.index', compact('fuels'));
     }
 
     /**
@@ -23,7 +25,7 @@ class FuelController extends Controller
      */
     public function create()
     {
-        //
+        return view('fuels.create');
     }
 
     /**
@@ -34,7 +36,11 @@ class FuelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fuel  = new fuel();
+        $fuel->name = $request->input('name');
+        $fuel->save();
+
+        return redirect()->route('fuels.index')->with('success', "{$fuel->name} sikeresen létrehozva");
     }
 
     /**
@@ -56,7 +62,8 @@ class FuelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $fuel = fuel::find($id);
+        return view('fuels.edit', compact('fuel'));
     }
 
     /**
@@ -68,7 +75,11 @@ class FuelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $fuel  = fuel::find($id);
+        $fuel->name = $request->input('name');
+        $fuel->save();
+
+        return redirect()->route('fuels.index')->with('success', "{$fuel->name} sikeresen módosítva");
     }
 
     /**
@@ -79,6 +90,9 @@ class FuelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $fuel  = fuel::find($id);
+        $fuel->delete();
+
+        return redirect()->route('fuels.index')->with('success', "{$fuel->name} sikeresen törölve");
     }
 }
