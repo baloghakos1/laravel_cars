@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BasicRequest;
 use App\Models\Fuel;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,7 @@ class FuelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BasicRequest $request)
     {
         $fuel  = new fuel();
         $fuel->name = $request->input('name');
@@ -73,7 +74,7 @@ class FuelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BasicRequest $request, $id)
     {
         $fuel  = fuel::find($id);
         $fuel->name = $request->input('name');

@@ -10,4 +10,14 @@ class Model extends EloquentModel
 {
     use HasFactory;
     public $timestamps = false;
+
+    function maker()
+    {
+        return $this->belongsTo(Maker::class);
+    }
+
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class);
+    }
 }

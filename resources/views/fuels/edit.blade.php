@@ -4,6 +4,7 @@
     <h1>Módosítás</h1>
     <div>
         <!-- Simplicity is the ultimate sophistication. - Leonardo da Vinci -->
+        @include('error')
         <form action="{{ route('fuels.update', $fuel->id) }}" method="post">
             @csrf
             @method('PATCH')
