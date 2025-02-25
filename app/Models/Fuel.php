@@ -9,4 +9,9 @@ class Fuel extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class);
+    }
 }

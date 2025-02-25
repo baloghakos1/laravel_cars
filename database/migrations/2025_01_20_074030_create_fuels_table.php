@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('fuels', function (Blueprint $table) {
             $table->id();
             $table->string ('name')->index();
+            $table->string ('logo')->nullable();
         });
     }
 

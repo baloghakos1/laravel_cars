@@ -27,6 +27,7 @@ class FuelsSeeder extends Seeder
         {
             $fuel=new Fuel();
             $fuel->name=$item;
+            $fuel->logo=null;
             $fuel->save();
         }
     }

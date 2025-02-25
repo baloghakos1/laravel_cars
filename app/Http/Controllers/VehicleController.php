@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BasicRequest;
-use App\Models\Body;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
-class BodyController extends Controller
+class VehicleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class BodyController extends Controller
      */
     public function index()
     {
-        $bodies = body::all();
-        return view('bodies.index', compact('bodies'));
+        $vehicles = vehicle::all();
+        return view('vehicles.index', compact('vehicles'));
     }
 
     /**
@@ -26,7 +26,7 @@ class BodyController extends Controller
      */
     public function create()
     {
-        return view('bodies.create');
+        return view('vehicles.create');
     }
 
     /**
@@ -37,11 +37,11 @@ class BodyController extends Controller
      */
     public function store(BasicRequest $request)
     {
-        $body  = new body();
-        $body->name = $request->input('name');
-        $body->save();
+        $vehicle  = new vehicle();
+        $vehicle->name = $request->input('name');
+        $vehicle->save();
 
-        return redirect()->route('bodies.index')->with('success', "{$body->name} sikeresen létrehozva");
+        return redirect()->route('vehicles.index')->with('success', "{$vehicle->name} sikeresen létrehozva");
     }
 
     /**
@@ -63,8 +63,8 @@ class BodyController extends Controller
      */
     public function edit($id)
     {
-        $body = body::find($id);
-        return view('bodies.edit', compact('body'));
+        $vehicle = vehicle::find($id);
+        return view('vehicles.edit', compact('vehicle'));
     }
 
     /**
@@ -76,11 +76,11 @@ class BodyController extends Controller
      */
     public function update(BasicRequest $request, $id)
     {
-        $body  = body::find($id);
-        $body->name = $request->input('name');
-        $body->save();
+        $vehicle  = vehicle::find($id);
+        $vehicle->name = $request->input('name');
+        $vehicle->save();
 
-        return redirect()->route('bodies.index')->with('success', "{$body->name} sikeresen módosítva");
+        return redirect()->route('vehicles.index')->with('success', "{$vehicle->name} sikeresen módosítva");
     }
 
     /**
@@ -91,9 +91,9 @@ class BodyController extends Controller
      */
     public function destroy($id)
     {
-        $body  = body::find($id);
-        $body->delete();
+        $vehicle  = vehicle::find($id);
+        $vehicle->delete();
 
-        return redirect()->route('bodies.index')->with('success', "{$body->name} sikeresen törölve");
+        return redirect()->route('vehicles.index')->with('success', "{$vehicle->name} sikeresen törölve");
     }
 }

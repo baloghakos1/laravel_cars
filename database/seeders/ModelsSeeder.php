@@ -11,11 +11,11 @@ class ModelsSeeder extends Seeder
 {
 
     const ITEMS = [
-        'BMW'=>['I3'],
-        'Audi'=>['A4'],
-        'Mercedes'=>['C-class'],
-        'Ford'=>['Focus'],
-        'Volvo'=>['S40'],
+        'BMW'=>['I8','M5'],
+        'Audi'=>['A4','TT'],
+        'Mercedes'=>['SLS','C-class'],
+        'Ford'=>['Focus','Fiesto'],
+        'Volvo'=>['S40','V40'],
     ];
     /**
      * Run the database seeds.
@@ -24,11 +24,11 @@ class ModelsSeeder extends Seeder
      */
     public function run()
     {
-        foreach (self::ITEMS as $key => $makers)
+        foreach (self::ITEMS as $key => $models)
         {
-            foreach ($makers as $item) 
+            foreach ($models as $item) 
             {
-                $maker = Maker::where(['name' => $item]);
+                $maker = Maker::where(['name' => $key])->first();
                 $model = new Model();
                 $model->maker_id=$maker->id;
                 $model->name= $item;

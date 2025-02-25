@@ -1,12 +1,12 @@
 @extends('layout')
 
 @section('content')
-<h1>Új Üzemanyag</h1>
+<h1>Új Karosszéria</h1>
 <div>
     <!-- Simplicity is the ultimate sophistication. - Leonardo da Vinci -->
 	<!-- ide íratjuk ki a validációs hibákat -->
     @include('error')
-    <form action="{{route('fuels.store')}}" method="post">
+    <form action="{{route('bodies.store')}}" method="post">
         @csrf
         <fieldset id="asd">
             <label for="name">Megnevezés</label>
@@ -14,6 +14,6 @@
         </fieldset>
         <button type="submit">Ment</button>
     </form>
-    <a href="{{ route('fuels.index') }}"><button>Mégse</button></a>
+    <a href="{{ route('bodies.index') }}"><button>Mégse</button></a>
 </div>
 @endsection
