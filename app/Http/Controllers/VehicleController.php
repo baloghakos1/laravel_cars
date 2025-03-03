@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BasicRequest;
+use App\Http\Requests\VehicleRequest;
 use App\Models\Vehicle;
+use App\Models\Maker;
+use App\Models\Model;
+use App\Models\Fuel;
+use App\Models\Body;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -15,7 +19,7 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        $vehicles = vehicle::all();
+        $vehicles = Vehicle::all();
         return view('vehicles.index', compact('vehicles'));
     }
 
@@ -26,7 +30,11 @@ class VehicleController extends Controller
      */
     public function create()
     {
-        return view('vehicles.create');
+        $makers = Maker::all();
+        $models = Model::all();
+        $bodies = body::all();
+        $fuels = Fuel::all();
+        return view('vehicles.create', compact('makers', 'models','bodies','fuels'));
     }
 
     /**
@@ -35,13 +43,18 @@ class VehicleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BasicRequest $request)
+    public function store(VehicleRequest $request)
     {
-        $vehicle  = new vehicle();
-        $vehicle->name = $request->input('name');
+        $vehicle  = new Vehicle();
+        $vehicle->vin = $request->input('vin');
+        $vehicle->license_plate = $request->input('license_plate');
+        $vehicle->maker_id = $request->input('maker_id');
+        $vehicle->model_id = $request->input('model_id');
+        $vehicle->body_id = $request->input('body_id');
+        $vehicle->fuel_id = $request->input('fuel_id');
         $vehicle->save();
 
-        return redirect()->route('vehicles.index')->with('success', "{$vehicle->name} sikeresen létrehozva");
+        return redirect()->route('vehicles.index')->with('success', "{$vehicle->vin} sikeresen létrehozva");
     }
 
     /**
@@ -63,8 +76,12 @@ class VehicleController extends Controller
      */
     public function edit($id)
     {
-        $vehicle = vehicle::find($id);
-        return view('vehicles.edit', compact('vehicle'));
+        $vehicle = Vehicle::find($id);
+        $makers = Maker::all();
+        $models = Model::all();
+        $bodies = body::all();
+        $fuels = Fuel::all();
+        return view('vehicles.edit', compact('vehicle','makers', 'models','bodies','fuels'));
     }
 
     /**
@@ -74,13 +91,18 @@ class VehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BasicRequest $request, $id)
+    public function update(VehicleRequest $request, $id)
     {
-        $vehicle  = vehicle::find($id);
-        $vehicle->name = $request->input('name');
+        $vehicle  = Vehicle::find($id);
+        $vehicle->vin = $request->input('vin');
+        $vehicle->license_plate = $request->input('license_plate');
+        $vehicle->maker_id = $request->input('maker_id');
+        $vehicle->model_id = $request->input('model_id');
+        $vehicle->body_id = $request->input('body_id');
+        $vehicle->fuel_id = $request->input('fuel_id');
         $vehicle->save();
 
-        return redirect()->route('vehicles.index')->with('success', "{$vehicle->name} sikeresen módosítva");
+        return redirect()->route('vehicles.index')->with('success', "{$vehicle->vin} sikeresen módosítva");
     }
 
     /**
@@ -91,9 +113,9 @@ class VehicleController extends Controller
      */
     public function destroy($id)
     {
-        $vehicle  = vehicle::find($id);
+        $vehicle  = Vehicle::find($id);
         $vehicle->delete();
 
-        return redirect()->route('vehicles.index')->with('success', "{$vehicle->name} sikeresen törölve");
+        return redirect()->route('vehicles.index')->with('success', "{$vehicle->vin} sikeresen törölve");
     }
 }

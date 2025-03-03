@@ -21,6 +21,7 @@ Route::resource('makers',MakerController::class);
 Route::resource('fuels',FuelController::class);
 Route::resource('bodies',BodyController::class);
 Route::resource('vehicles',VehicleController::class);
+Route::get('/makers/{maker}/fetch-models', [MakerController::class, 'fetchModels'])->name('makers.fetch.models');
 
 /*Route::get('/', function () {
     return view('welcome');

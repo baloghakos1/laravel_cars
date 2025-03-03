@@ -12,7 +12,13 @@
             <a href="{{ route('makers.create')}}"><button>Új hozzáadása</button></a>
         </div>
         <br><br><br>
-        
+        <table>
+                <tr>
+                    <td><div class="col id">Id</div></td>
+                    <td><div class="col">Név</div></td>
+                    <td><div class="col">Gombok</div></td>
+                </tr>
+        </table>
         @foreach($makers as $maker)
             <table>
                 <tr>

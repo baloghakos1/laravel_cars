@@ -25,7 +25,7 @@ class Vehicle extends Model
         return $this->belongsTo(Maker::class);
     }
 
-    function Model()
+    function model()
     {
         return $this->belongsTo(Model::class);
     }

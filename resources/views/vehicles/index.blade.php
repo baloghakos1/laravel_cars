@@ -12,12 +12,29 @@
             <a href="{{ route('vehicles.create')}}"><button>Új hozzáadása</button></a>
         </div>
         <br><br><br>
-        
+
+        <table>
+                <tr>
+                    <td><div class="col id">Id</div></td>
+                    <td><div class="col">Alvázszám</div></td>
+                    <td><div class="col">Rendszám</div></td>
+                    <td><div class="col">Gyártó_id</div></td>
+                    <td><div class="col">Model_id</div></td>
+                    <td><div class="col">Karosszéria_id</div></td>
+                    <td><div class="col">Üzemanyag_id</div></td>
+                    <td><div class="col">Gombok</div></td>
+                </tr>
+        </table>
         @foreach($vehicles as $vehicle)
             <table>
                 <tr>
                     <td><div class="col id">{{ $vehicle->id }}</div></td>
-                    <td><div class="col">{{$vehicle->name}}</div></td>
+                    <td><div class="col">{{$vehicle->vin}}</div></td>
+                    <td><div class="col">{{$vehicle->license_plate}}</div></td>
+                    <td><div class="col">{{$vehicle->maker_id}}</div></td>
+                    <td><div class="col">{{$vehicle->model_id}}</div></td>
+                    <td><div class="col">{{$vehicle->body_id}}</div></td>
+                    <td><div class="col">{{$vehicle->fuel_id}}</div></td>
                 <td>
                 <div class="right">
 
